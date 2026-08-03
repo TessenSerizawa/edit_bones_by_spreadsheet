@@ -8,9 +8,9 @@ from . import export_csv
 bl_info = {
     "name": "Edit bones by spreadsheet",
     "author": "Uiler",
-    "version": (0, 2),
-    "blender": (2, 81),
-    "location": "User",
+    "version": (0, 3, 0),
+    "blender": (4, 5, 0),
+    "location": "View3D > Sidebar > EBSS",
     "description": "Edit bones data by csv.Names,hide,...and so on.",
     "warning": "",
     "wiki_url": "",
@@ -54,6 +54,13 @@ def _defProperties():
 
     # Define Addon's Properties
     bpy.types.Scene.uil_edit_bones_by_spreadsheet_propgrp = bpy.props.PointerProperty(type=EditBonesBySpreadSheetProperties)
+
+
+def _delProperties():
+
+    # Undefine Addon's Properties
+    if hasattr(bpy.types.Scene, "uil_edit_bones_by_spreadsheet_propgrp"):
+        del bpy.types.Scene.uil_edit_bones_by_spreadsheet_propgrp
 
 #########################################################
 # UI
@@ -129,8 +136,10 @@ def register():
 
 def unregister():
     from bpy.utils import unregister_class
-    for cls in classes:
+    for cls in reversed(classes):
         unregister_class(cls)
+
+    _delProperties()
 
 
 if __name__ == "__main__":

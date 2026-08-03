@@ -1,0 +1,25 @@
+schema_version = "1.0.0"
+
+id = "edit_bones_by_spreadsheet"
+version = "0.3.0"
+name = "Edit bones by spreadsheet"
+tagline = "Rename bones / toggle bone hide by editing a CSV spreadsheet"
+maintainer = "Uiler"
+type = "add-on"
+
+blender_version_min = "4.2.0"
+
+license = [
+  "SPDX:GPL-3.0-or-later",
+]
+
+tags = ["Rigging", "Animation", "Import-Export"]
+
+# This add-on only touches files the user explicitly points the
+# "convert_table" file path property at, and only when the user
+# presses Export CSV / Convert Name / Set Hide. Declaring the
+# "files" permission is required by the Extensions Platform for any
+# add-on that reads/writes to disk outside of Blender's own file I/O
+# operators.
+[permissions]
+files = "Read/write the CSV convert-table file selected by the user"

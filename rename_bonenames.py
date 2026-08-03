@@ -23,12 +23,10 @@ _NAME_CONVERT_REPLACED = common.NAME_CONVERT_REPLACED
 def getConvertDictionaryFromCsv(COL_A, COL_B):
 
     ret = {}
-    with open(convert_file_table, newline='', encoding='cp932') as f:
-        reader = csv.reader(f)
+    f, reader = common.openCsvReader(convert_file_table)
+    with f:
         for row in reader:
             ret[row[COL_A]] = row[COL_B]
-
-        f.close()
 
     return ret
 

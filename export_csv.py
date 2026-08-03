@@ -36,8 +36,8 @@ def getConvertDictionaryFromCsv(type, bones):
     if not os.path.exists(convert_file_table):
         return ret
 
-    with open(convert_file_table, newline='', encoding='cp932') as f:
-        reader = csv.reader(f)
+    f, reader = common.openCsvReader(convert_file_table)
+    with f:
         for row in reader:
             if re.match("#.+", row[COL_A_NAME_O]):
                 # Ignore comment row
@@ -55,16 +55,18 @@ def getConvertDictionaryFromCsv(type, bones):
 
             ret[key] = data
 
-        f.close()
-
     return ret
 
 
 # write csv
+# Written as utf-8-sig (UTF-8 with BOM) so the file opens correctly
+# both in Excel (including Japanese-locale Excel, which needs the BOM
+# to auto-detect UTF-8) and in any text editor / other tool, without
+# depending on the Windows-only cp932 codec.
 def writeToCsv(rows):
 
     ret = OrderedDict()
-    with open(convert_file_table, 'w', newline='', encoding='cp932') as f:
+    with open(convert_file_table, 'w', newline='', encoding='utf-8-sig') as f:
         writer = csv.writer(f)
 
         # write comment
@@ -73,8 +75,6 @@ def writeToCsv(rows):
         for row in rows:
             # print(row)
             writer.writerow(row)
-
-        f.close()
 
     return ret
 
@@ -150,7 +150,7 @@ def write_csv_main(context):
 class WriteBoneValuesByCSV(bpy.types.Operator):
     bl_idname = "uiler.writebonevaluesbycsv"
     bl_label = "Export CSV"
-    bl_description = "Export csv file"    
+    bl_description = "Export csv file"
     bl_options = {'REGISTER', 'UNDO'}
 
     def validate(self, context):
