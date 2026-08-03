@@ -19,30 +19,7 @@ MikuMikuDanceやMayaのHumanIKのボーン名はBlenderの左右対称命名規�
 - `blender_manifest.toml` を追加し、Blender 4.2以降の「拡張機能(Extension)」形式でもインストール可能に(従来通り「レガシーアドオンのインストール」でも動作します)
 
 ### インストール方法(Blender 4.5)
-
-**方法A: 拡張機能としてインストール(推奨)**
-このフォルダごとZIP化し、Blenderの `編集 > プリファレンス > 拡張機能 (Get Extensions)` 右上のドロップダウンから「ディスクからインストール (Install from Disk)」でZIPを選択してください。
-
-**方法B: レガシーアドオンとしてインストール**
-`編集 > プリファレンス > アドオン (Add-ons)` 右上のドロップダウンから「レガシーアドオンをインストール (Install Legacy Add-on)」でZIPを選択してください。
+ZIPファイルごとBlenderの `編集 > プリファレンス > 拡張機能 (Get Extensions)` 右上のドロップダウンから「ディスクからインストール (Install from Disk)」でZIPを選択してください。
 
 <br/>
 [チュートリアル動画]https://youtu.be/61QXbOFOzBE
-
-もし、サポートいただける場合は、Entyからご購入いただけると助かります。<br/>
-https://enty.jp/products/362
-
-また、定期的なサポートも歓迎しています。<br/>
-https://enty.jp/Perfektwelt
-
-This add-on that convert name and hide of bones by csv.In Blender, the name of bones like MikuMikuDance or HumanIK is not regard to symmetric. So, you can't edit symmetrically bones, poses, and weights. If you use this add-on, you can temporarily convert name and symmetrically edit.After finish editing, you can convert name back to original.
-
-[Tutorial]https://youtu.be/61QXbOFOzBE
-
-Please purchase from Enty if you can support. (Enty account is required.)<br/>
-https://enty.jp/products/362
-
-Also, I appreciate your support monthly.<br/>
-https://enty.jp/en/Perfektwelt
-
-(Donation between individuals is prohibited in Japan so please via Enty.)
